@@ -1,0 +1,23 @@
+version : 0.2
+
+phases:
+  install:
+    commands:
+      # Using Ubuntu
+      - curl -fsSL https://deb.nodesource.com/setup_12.x | bash -
+      - apt install -y nodejs
+
+      - curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+  prebuild:
+    commands:
+      - npm install
+  build:
+    commands:
+       - npm run build
+
+
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist
