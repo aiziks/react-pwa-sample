@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <div>
             <AppBar/>
-            <h1>Home</h1>
+            <h1>Home </h1>
 
 
             <select className="form-select" aria-label="Default select example">

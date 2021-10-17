@@ -1,40 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="./static/images/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta  name="description" content="Reactjs PWA Weather App " />
-    <link rel="apple-touch-icon" href="./static/images/logo.png" />
-    <link rel="manifest" href="./manifest.json" />
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" /> -->
-    <link href="./static/css/bootstrap.min.css" rel="stylesheet" />
-    
-    <title>React PWA App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="app"></div>
-   
 
-    <!-- <script ></script> -->
-    <script src="./static/js/bootstrap.bundle.min.js" ></script>
-    <script>
-    //Registering our serviceWorker
-      // if( 'serviceWorker' in navigator ){ //check if serviceWorker is in Broswer navigator object
-        // window.addEventListener('load' , () => {
-          // navigator.serviceWorker.register('./serviceWorker.js')
-      //     navigator.serviceWorker.register('./serviceWorker.js')
-      //     .then(reg => console.log('Success : ' , reg.scope))
-      //     .catch(err => console.log('Failure' , err));
-      //   // })
-      
-      // }else{
-      //   console.log('sw not working')
-      // }
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="./static/images/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#009578" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="description" content="Reactjs PWA Weather App " />
+  <title>React PWA App</title>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="./static/images/logo.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="" type="image/x-icon">
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" /> -->
+  <link href="./static/css/bootstrap.min.css" rel="stylesheet" />
+
+  
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="app"></div>
+
+
+
+<button class="add-button" disabled > Click this to show the prompt  </button>
+
+
+<script>
+    
+    if ('serviceWorker' in navigator) { //check if serviceWorker is in Broswer navigator object
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('Success : ', reg))
+          .catch(err => console.log('Failure', err));
+      })
+
+    } 
+
+
+
+
+
+
+
+
+    // notification settings
+//     function displayNotification() {
+//   if (Notification.permission == 'granted') {
+//     navigator.serviceWorker.getRegistration().then(function(reg) {
+//       var options = {
+//         body: 'Here is a notification body!',
+//         icon: 'static/images/logo.png',
+//         vibrate: [100, 50, 100],
+//         data: {
+//           dateOfArrival: Date.now(),
+//           primaryKey: 1
+//         },
+//         actions: [
+//           {action: 'explore', title: 'Explore this new world',
+//           icon: 'static/images/logo.png',},
+//           {action: 'close', title: 'Close notification',
+//             icon: 'images/xmark.png'},
+//         ]
+//       };
+//       reg.showNotification('Hello world!', options);
+//     });
+//   }
+// }
+
+
+    // var endpoint;
+    // var key;
+    // var authSecret;
+    // var vapidPublicKey ='BAyb_WgaR0L0pODaR7wWkxJi__tWbM1MPBymyRDFEGjtDCWeRYS9EF7yGoCHLdHJi6hikYdg4MuYaK0XoD0qnoY';
+    // function urlBase64ToUint8Array(base64String) {
+    //   const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    //   const base64 = (base64String + padding)
+    //     .replace(/\-/g, '+')
+    //     .replace(/_/g, '/');
+    //   const rawData = window.atob(base64);
+    //   const outputArray = new Uint8Array(rawData.length);
+    //   for (let i = 0; i < rawData.length; ++i) {
+    //     outputArray[i] = rawData.charCodeAt(i);
+    //   }
+    //   return outputArray;
+    // }
+    // if ('serviceWorker' in navigator) {
+    //   navigator.serviceWorker.register('sw.js').then(function (registration) {
+    //     return registration.pushManager.getSubscription()
+    //       .then(function (subscription) {
+    //         if (subscription) {
+    //           return;
+    //         }
+    //         return registration.pushManager.subscribe({
+    //           userVisibleOnly: true,
+    //           applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
+    //         })
+
+    //           .then(function (subscription) {
+    //             var rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
+    //             key = rawKey ? btoa(String.fromCharCode.apply(null, new
+    //               Uint8Array(rawKey))) : '';
+    //             var rawAuthSecret = subscription.getKey ?
+    //               subscription.getKey('auth') : '';
+    //             authSecret = rawAuthSecret ?
+    //               btoa(String.fromCharCode.apply(null, new
+    //                 Uint8Array(rawAuthSecret))) : '';
+    //             endpoint = subscription.endpoint;
+    //             return fetch('./register', {
+    //               method: 'post',
+    //               headers: new Headers({
+    //                 'content-type': 'application/json'
+    //               }),
+    //               body: JSON.stringify({
+    //                 endpoint: subscription.endpoint,
+    //                 key: key,
+    //                 authSecret: authSecret,
+    //               }),
+    //             });
+    //           });
+    //       });
+    //   }).catch(function (err) {
+    //     // registration failed :(
+    //     console.log('ServiceWorker registration failed: ', err);
+    //   });
+    // }
+  </script>
+
+
+
+<script src="./installPrompt.js"></script>
+<script src="./push.js"></script>
+
+</body>
+
 </html>
 
-    
+
+
+<!-- Note -->
+<!-- 1 . encryption => https://letsencrypt.org/getting-started/  -->

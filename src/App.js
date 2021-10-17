@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 
 import { fetchWeather } from './api/fetchWeather';
 import './App.css';
@@ -11,19 +11,24 @@ import About from './component/About';
 import Home from './component/Home';
 
 
+
+
  const  App = () => {
     const [query , setQuery]  = useState('');
     const [weather , setWeather] = useState({})
 
-    const search = async (e) => {
-        if(e.key == 'enter'){
-             const data = await fetchWeather(query)
+   
 
-             setWeather(data) //setting retrieved weather data into the weather state using the setWeather of useState() hook
-            console.log(data);
-            setQuery('') //setting the query to an empty string
-        }
-    }
+
+    // const search = async (e) => {
+    //     if(e.key == 'enter'){
+    //          const data = await fetchWeather(query)
+
+    //          setWeather(data) //setting retrieved weather data into the weather state using the setWeather of useState() hook
+    //         console.log(data);
+    //         setQuery('') //setting the query to an empty string
+    //     }
+    // }
 
     return (
         <div className="main-continer">
@@ -32,9 +37,9 @@ import Home from './component/Home';
             <Router>
       
             <Switch>            
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/users" component={Users} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/users" component={Users} />
             </Switch>
             </Router>
 
@@ -59,7 +64,8 @@ import Home from './component/Home';
             </div>
             )}
 
-        <h1>React PWA</h1> */}
+        <h1> React PWA </h1> */}
+
         </div> 
     );
 }

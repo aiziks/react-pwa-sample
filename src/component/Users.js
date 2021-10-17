@@ -30,7 +30,7 @@ useEffect(() => {
         <div>
             <AppBar/>
             
-            { online ?  null :  <div class="alert alert-warning" role="alert">You are in offline mode or connection problem...</div>  }
+            { online ?  null :  <div className="alert alert-warning" role="alert">You are in offline mode or connection problem...</div>  }
 
             <h1>Users</h1>
 
